@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Watch</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        #container {
+            background-color: rgb(9, 9, 35);
+            border: 3px solid #f5ea40;
+            height: 100px;
+            border-radius: 10px;
+            padding: 20px 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .clockHolder {
+            display: flex;
+            align-items: center;
+        }
+
+        .timeHolder {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-right: 30px;
+            color: white;
+        }
+
+        .timeHolder i {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            display: block;
+        }
+
+        .mainDiv .clock {
+            font-size: 60px;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        #container::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 8px;
+            background-color: #f5ea40;
+            border-radius: 4px;
+            box-shadow: 0 8px 20px #f5ea40;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="clockHolder">
+            <div class="timeHolder">
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+            <div class="mainDiv">
+                <p class="clock"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const setTime = () =>{
+            let time = new Date().toLocaleTimeString();
+            document.querySelector(".clock").innerText = time;
+        }
+
+        setTime();
+        
+        const stopTime = setInterval(setTime , 1000);
+
+        // setTimeout(() => clearTimeout(stopTime),10000);
+
+    </script>
+</body>
+</html>
